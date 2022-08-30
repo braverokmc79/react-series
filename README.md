@@ -7,43 +7,43 @@ https://www.inflearn.com/course/따라하며-배우는-노드-리액트-기본/d
 # 섹션 0. Node JS
 강의\
 \
-1 소개\
-2 NODE JS 와 EXPRESS JS 다운로드 하기\
-3 몽고 DB 연결\
-4 MongoDB Model & Schema\
-5 GIT 설치\
-6 SSH를 이용해 GITHUB 연결\
-7 BodyParser & PostMan & 회원 가입 기능\
-8 Nodemon 설치\
-9 비밀 설정 정보 관리\
-10 Bcrypt로 비밀번호 암호화 하기\
-11 로그인 기능 with Bcrypt (1)\
-12 토큰 생성 with jsonwebtoken\
-13 Auth 기능 만들기\
-14 로그아웃 기능
+1.소개\
+2.NODE JS 와 EXPRESS JS 다운로드 하기\
+3.몽고 DB 연결\
+4.MongoDB Model & Schema\
+5.GIT 설치\
+6.SSH를 이용해 GITHUB 연결\
+7.BodyParser & PostMan & 회원 가입 기능\
+8.Nodemon 설치\
+9.비밀 설정 정보 관리\
+10.Bcrypt로 비밀번호 암호화 하기\
+11.로그인 기능 with Bcrypt (1)\
+12.토큰 생성 with jsonwebtoken\
+13.Auth 기능 만들기\
+14.로그아웃 기능
 
 # 섹션 1. React JS
-20 강의\
-15 리액트란 ?\
-16 Create-React-App\
-17 npm npx\
-18 구조 설명\
-19 CRA to Our Boilerplate\
-20 React Router Dom\
-21 데이터 Flow & Axios\
-22 CORS 이슈, Proxy 설정\
-23 Proxy Server ?\
-24 Concurrently\
-25 Antd CSS Framwork
-26 Redux 기초\
-27 Redux UP !!!!!\
-28 React Hooks\
-29 로그인 페이지(1)\
-30 로그인 페이지(2)\
-31 회원 가입 페이지\
-32 로그아웃\
-33 인증 체크 (1)\
-34 인증 체크 (2) 강의 마무리.
+20.강의\
+15.리액트란 ?\
+16.Create-React-App\
+17.npm npx\
+18.구조 설명\
+19.CRA to Our Boilerplate\
+20.React Router Dom\
+21.데이터 Flow & Axios\
+22.CORS 이슈, Proxy 설정\
+23.Proxy Server ?\
+24.Concurrently\
+25.Antd CSS Framwork
+26.Redux 기초\
+27.Redux UP !!!!!\
+28.React Hooks\
+29.로그인 페이지(1)\
+30.로그인 페이지(2)\
+31.회원 가입 페이지\
+32.로그아웃\
+33.인증 체크 (1)\
+34.인증 체크 (2) 강의 마무리.
 
 # 2. Diagram 자료
 2 강의\
