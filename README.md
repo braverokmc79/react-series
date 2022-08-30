@@ -22,7 +22,7 @@ https://www.inflearn.com/course/따라하며-배우는-노드-리액트-기본/d
 13 Auth 기능 만들기\
 14 로그아웃 기능
 
-# 섹션 1. React JS\
+# 섹션 1. React JS
 20 강의\
 15 리액트란 ?\
 16 Create-React-App\
@@ -45,10 +45,10 @@ https://www.inflearn.com/course/따라하며-배우는-노드-리액트-기본/d
 33 인증 체크 (1)\
 34 인증 체크 (2) 강의 마무리.
 
-#2. Diagram 자료\
+# 2. Diagram 자료
 2 강의\
 Diagram HTML 자료\
-Diagram XML 자료\
+Diagram XML 자료
 
 
 
