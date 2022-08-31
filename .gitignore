@@ -30,3 +30,6 @@ yarn-error.log*
 
 
 /biler-plate/mongodbURI.js
+
+/biler-plate/config/dev.js
+/biler-plate/config/prod.js
