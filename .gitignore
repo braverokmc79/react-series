@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /biler-plate/node_modules
+/client/node_modules
 
 /.pnp
 /biler-plate/.pnp
@@ -15,6 +16,15 @@
 # production
 /build
 /coverage/build
+
+/client/build
+/biler-plate/build
+
+/biler-plate/coverage/build
+/client/coverage/build
+
+
+/client/.gitignore
 
 
 # misc
