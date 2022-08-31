@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
+const SECRET_KEY = "abcd!!!333";
+
 
 const userSchema = mongoose.Schema({
     name: {
@@ -82,7 +84,7 @@ userSchema.methods.generateToken = function (cb) {
     //jsonwebtoken 을 이용해서 token 을 생성하기
     const user = this;
 
-    const token = jwt.sign(user._id.toHexString(), "abcd!!!333");
+    const token = jwt.sign(user._id.toHexString(), SECRET_KEY);
 
     user.token = token;
     user.save(function (err, user) {
@@ -91,6 +93,43 @@ userSchema.methods.generateToken = function (cb) {
     });
 }
 
+
+userSchema.statics.findByToken = function (token, cb) {
+    const user = this;
+
+    /***  토큰을 decode 한다.***/
+
+    //user._id+''=token
+    //const SECRET_KEY: "abcd!!!333"
+    jwt.verify(token, SECRET_KEY, function (err, decoded) {
+
+        //1) 라이언트에서 가져온 토큰과 SECRET_KEY 값과 조합을 해서 decoded 값을 생성한다.
+        //여기서 decoded 는 user._id 가 된다. 만약 SECRET_KEY 불일치로 조합에 실패할 경우 
+        //decoded 값인 user._id 는  undefined 가 된다.
+
+
+        //2)decoded 하연 생성된 유저아이디와 토큰값을 이용해서 DB에서 정보를 가져온다.
+        //3)DB에 가져온 데이터가 없으면 에러, 있으면 유저 정보값을 콜백으로 반환시켜 미들웨어 auth 에서 처리 시킨다.
+
+        console.log("클라이언트에서 가져온 토큰값 :", token);
+        console.log("decoded 는 user._id  :", decoded);
+
+
+        //예
+        //클라이언트에서 가져온 토큰값: eyJhbGciOiJIUzI1NiJ9.NjMwZWRhZGIxZjA2ZTJiMGJlN2FkZWVh.venwg5 - aVAvLA72IDSa1VNkls2MYwK6zXp3wJKSrn6k
+        //ecoded 는 user._id  : 630edadb1f06e2b0be7adeea
+        //findOne() 은 몽고DB함수
+        user.findOne({ "_id": decoded, "token": token }, function (err, user) {
+            if (err) return cb(err)
+            cb(null, user);
+
+        });
+
+    });
+
+
+
+}
 
 
 const User = mongoose.model('User', userSchema);
