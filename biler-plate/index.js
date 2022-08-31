@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 mongoose.connect(mongodbURI,
 ).then(() => console.log("MongoDB Connected...")).catch(err => console.error("에러 :", err));
 
-app.get('/', (req, res) => { res.send('Hello World! 안녕하세요.') })
+app.get('/', (req, res) => { res.send('Hello World! 안녕하세요.11') })
 
 
 app.post('/register', (req, res) => {
