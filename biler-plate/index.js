@@ -101,11 +101,24 @@ app.get('/api/users/auth', auth, (req, res) => {
         image: req.user.image
     });
 
-
 });
 
 
+app.get("/api/users/logout", auth, (req, res) => {
 
+    //1.미들웨어를 통해 토큰값으로 아이디값을 가져온다.  
+    //가져온 아이디 예: 630edadb1f06e2b0be7adeea  
+
+    //2. 몽고 DB 내장 함수인 findOneAndUpdate 통해 몽고 DB 토큰값을 지운다.
+
+    User.findOneAndUpdate({ _id: req.user._id },
+        { token: "" },
+        (err, user) => {
+            if (err) return res.json({ success: false, err });
+            return res.status(200).send({ success: true });
+        }
+    );
+});
 
 
 
