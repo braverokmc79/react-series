@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const jwt = require("jsonwebtoken");
 
 const userSchema = mongoose.Schema({
     name: {
@@ -66,6 +66,28 @@ userSchema.methods.comparePassword = function (plainPassword, cb) {
     bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
         if (err) return cb(err);
         else return cb(null, isMatch);
+    });
+}
+
+userSchema.methods.generateToken = function (cb) {
+    //몽고DB 에 저장된 형태
+    /*  _id:ObjectId("630edadb1f06e2b0be7adeea")
+        name:"홍길동"
+        email:"test1@gmail.com"
+        password: "$2b$10$LK86g2vaPNMHVLkj69hO7uzodTXATNMezdKnWymKi8QoTX9pE3bey"
+        role: 0
+        __v:0
+    */
+    //jwt.sign({ foo: 'bar' }, 'shhhhh');  shhhhh 는 임이 문자
+    //jsonwebtoken 을 이용해서 token 을 생성하기
+    const user = this;
+
+    const token = jwt.sign(user._id.toHexString(), "abcd!!!333");
+
+    user.token = token;
+    user.save(function (err, user) {
+        if (err) return cb(err)
+        cb(null, user)
     });
 }
 

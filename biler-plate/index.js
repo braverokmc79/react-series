@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const { User } = require("./models/User");
 const bodyParser = require("body-parser");
 const config = require("./config/key");
+const cookieParser = require("cookie-parser");
+
 
 //const mongodbURI = require('./mongodbURI')
 
@@ -15,6 +17,8 @@ app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extends: true }));
 //Mongoose 6은 항상 useNewUrlParser, useUnifiedTopology 및 useCreateIndex가 true이고 useFindAndModify가 false인 것처럼 작동
 
+
+app.use(cookieParser());
 
 
 mongoose.connect(config.mongoURI,
@@ -66,7 +70,18 @@ app.post('/login', (req, res) => {
             if (!isMatch) return res.json({ loginSuccess: false, message: "비밀번호가 틀렸습니다." });
 
             //3.비밀 번호까지 같다면 Token을 생성
-            res.send("Token을 생성");
+            user.generateToken((err, user) => {
+                if (err) return res.status(400).send(err);
+
+                //토큰을 저장한다. 어디에? 쿠키, 로컬스토리지
+                res.cookie("x_auth", user.token).status(200).json({
+                    loginSuccess: true,
+                    userId: user._id,
+                    token: user.token
+                })
+
+            });
+
         })
 
 
