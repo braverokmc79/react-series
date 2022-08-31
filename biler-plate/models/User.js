@@ -60,6 +60,17 @@ userSchema.pre('save', function (next) {
 })
 
 
+//userSchema.methods  => 커스텀 함수 생성
+userSchema.methods.comparePassword = function (plainPassword, cb) {
+    //plainPassword 비밀번호가 12345 일때,   this.password 는 암호화된 비밀번호 $2b$10$LK86g2vaPNMHVLkj69hO7uzodTXATNMezdKnWymKi8QoTX9pE3bey
+    bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
+        if (err) return cb(err);
+        else return cb(null, isMatch);
+    });
+}
+
+
+
 const User = mongoose.model('User', userSchema);
 
 
