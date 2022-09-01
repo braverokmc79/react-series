@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import LandingPage from './components/views/LandingPage/LandingPage';
 import LoginPage from './components/views/LoginPage/LoginPage';
 import RegisterPage from './components/views/RegisterPage/RegisterPage';
@@ -8,17 +8,19 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <h1>Welcome to React Router!</h1>
+        <div>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">login</Link></li>
+            <li><Link to="/register">register</Link></li>
+          </ul>
+        </div>
 
         <Routes>
-
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-
-
         </Routes>
-
 
       </BrowserRouter>
     </div>
