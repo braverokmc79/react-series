@@ -31,8 +31,8 @@ function LoginPage() {
         console.log("1. dispatch 로 body 값 action 에 데이터 전달");
         dispatch(loginUser(body)).then(response => {
             if (response.payload.loginSuccess) {
-                alert(response.payload.loginSuccess);
-                //navigate("/");
+                //alert(response.payload.loginSuccess);
+                navigate("/");
             } else {
                 alert('Error');
             }

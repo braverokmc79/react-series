@@ -1,4 +1,4 @@
-import { LOGIN_USER } from '../_actions/types';
+import { LOGIN_USER, REGISTER_USER } from '../_actions/types';
 
 const initialState = { value: 0 }
 export default function user_reducers(state = initialState, action) {
@@ -9,7 +9,9 @@ export default function user_reducers(state = initialState, action) {
         case LOGIN_USER:
             result = { ...state, loginSuccess: action.payload }
             break;
-
+        case REGISTER_USER:
+            result = { ...state, register: action.payload }
+            break;
         default:
             result = state;
             break;
