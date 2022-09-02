@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOGIN_USER, REGISTER_USER } from './types';
+import { LOGIN_USER, REGISTER_USER, AUTH_USER } from './types';
 
 export function loginUser(dataTomSubmit) {
     console.log("2. actions 액션작업 시작 - axios 전송");
@@ -22,6 +22,18 @@ export function registerUser(dataTomSubmit) {
 
     return {
         type: REGISTER_USER,
+        payload: request
+    }
+}
+
+
+
+export function auth() {
+    const request = axios.post('/api/users/auth')
+        .then(res => res.data);
+
+    return {
+        type: AUTH_USER,
         payload: request
     }
 }
