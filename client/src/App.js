@@ -23,11 +23,8 @@ function App() {
         </div>
 
         <Routes>
-
           <Route path="/" element={<AuthLandingPage />} />
-          <Route path="/login" element={<AuthLoginPage />} >
-                
-          </Route>
+          <Route path="/login" element={<AuthLoginPage />} />
           <Route path="/register" element={<AuthRegisterPage />} />
         </Routes>
 
@@ -35,6 +32,4 @@ function App() {
     </div>
   );
 }
-
-
 export default App;
