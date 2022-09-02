@@ -7,11 +7,20 @@ import { Provider } from 'react-redux';
 import Reducer from './_reducers';
 import { configureStore } from "@reduxjs/toolkit";
 
+import logger from 'redux-logger'
+const store = configureStore({
+  // composeWithDevtools, thunk 자동 활성화
+  reducer: Reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(logger),
+  devTools: process.env.NODE_ENV !== "production"
+});
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-  <Provider store={configureStore({ reducer: Reducer })}>
-    configureStore 사용11
+  <Provider store={store}>
+    configureStore 사용112
     < App />
   </Provider >
 
