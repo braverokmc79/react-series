@@ -87,7 +87,7 @@ app.post('/api/users/login', (req, res) => {
 
 //role 1 어드민  role 2 특정 부서 어드민
 //rele 0 -> 일반유저 ,  role 0 이 아니면 관리자.
-app.get('/api/users/auth', auth, (req, res) => {
+app.post('/api/users/auth', auth, (req, res) => {
 
     //여기 까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 True 라는 말
     res.status(200).json({
